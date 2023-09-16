@@ -6,17 +6,20 @@
 /*   By: zknapeko <zknapeko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 15:12:43 by zknapeko          #+#    #+#             */
-/*   Updated: 2023/09/07 15:30:38 by zknapeko         ###   ########.fr       */
+/*   Updated: 2023/09/11 19:44:38 by zknapeko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void ft_bzero(void *s, int n)
+#include "libft.h"
+
+void	ft_bzero(void *s, size_t n)
 {
-    char  *p_char;
-    p_char = (char*)s;
-    while (n>0)
-    {
-        *(p_char++) = '\0';
-        n--;
-    }
+	char	*p_char;
+
+	p_char = (char *)s;
+	while (n > 0)
+	{
+		*(p_char++) = '\0';
+		n--;
+	}
 }

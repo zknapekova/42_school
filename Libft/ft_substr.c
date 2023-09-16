@@ -6,7 +6,7 @@
 /*   By: zknapeko <zknapeko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 14:29:09 by zknapeko          #+#    #+#             */
-/*   Updated: 2023/09/09 18:50:35 by zknapeko         ###   ########.fr       */
+/*   Updated: 2023/09/11 17:15:55 by zknapeko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ The substring begins at index ’start’ and is of maximum size ’len’.
 */
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char			*result;
-	int				i;
-	unsigned int	str_len;
+	char	*result;
+	int		i;
+	size_t	str_len;
 
-	str_len = ft_strlen((char *)s);
+	str_len = ft_strlen(s);
 	i = 0;
 	if (start >= str_len || (len == 0))
 	{

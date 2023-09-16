@@ -6,13 +6,15 @@
 /*   By: zknapeko <zknapeko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 12:44:29 by zknapeko          #+#    #+#             */
-/*   Updated: 2023/09/07 12:53:38 by zknapeko         ###   ########.fr       */
+/*   Updated: 2023/09/11 15:02:56 by zknapeko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char *str)
+#include "libft.h"
+
+size_t	ft_strlen(const char *str)
 {
-	int	len;
+	size_t	len;
 
 	len = 0;
 	while (str[len])

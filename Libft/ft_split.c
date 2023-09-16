@@ -6,19 +6,18 @@
 /*   By: zknapeko <zknapeko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 16:40:59 by zknapeko          #+#    #+#             */
-/*   Updated: 2023/09/09 17:19:43 by zknapeko         ###   ########.fr       */
+/*   Updated: 2023/09/11 17:48:24 by zknapeko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include<stdio.h>
 
 static int	ft_count_substrings(char const *s, char del)
 {
 	int	count;
 
-	count = 0;	
-	while(*s)
+	count = 0;
+	while (*s)
 	{
 		if (*s == del)
 			s++;
@@ -30,12 +29,12 @@ static int	ft_count_substrings(char const *s, char del)
 	return (count);
 }
 
-static int	ft_first_occur(char const *s, char c)
+static size_t	ft_del_index(char const *s, char c)
 {
-	int	index;
+	size_t	index;
 
-	index = 0;	
-	while(*s)
+	index = 0;
+	while (*s)
 	{
 		if (*s != c)
 			index++;
@@ -43,18 +42,35 @@ static int	ft_first_occur(char const *s, char c)
 			return (index);
 		s++;
 	}
-	return (-1);
+	if (index == 0)
+		index = ft_strlen(s);
+	return (index);
 }
 
-char    **ft_split(char const *s, char c)
+static char	**free_array(char **arr)
+{
+	int	i;
+
+	i = 0;
+	while (arr[i])
+	{
+		free(arr[i]);
+		i++;
+	}
+	free(arr);
+	return (NULL);
+}
+
+char	**ft_split(char const *s, char c)
 {
 	char	**result;
 	int		count;
-	int		del_index;	
-	
+	int		i;
+
+	i = 0;
 	count = ft_count_substrings(s, c);
-	result = (char **)malloc(sizeof(char*) * count);
-	if ((!result))
+	result = (char **) malloc(sizeof(char *) * (count + 1));
+	if (!result)
 		return (NULL);
 	while (*s)
 	{
@@ -62,26 +78,14 @@ char    **ft_split(char const *s, char c)
 			s++;
 		if (*s && *s != c)
 		{
-			del_index = ft_first_occur(s, c);
-			if (del_index < 0)
-				del_index = ft_strlen((char *)s);		
-			*result = ft_substr(s, 0, del_index);
-			printf("result: %s\n", ft_substr(s, 0, del_index));
-			result++;
+			result[i] = ft_substr(s, 0, ft_del_index(s, c));
+			if (!(result[i]))
+				free_array(result);
+			i++;
 		}
-		while (del_index-- > 0)
+		while (*s && *s != c)
 			s++;
-		printf("reminds: %s\n", s);	
 	}
-	result = NULL;
+	result[i] = NULL;
 	return (result);
-}
-
-int	main(void)
-{
-	char	**tab;
-	const char str[] = "abc111def1ghi11";
-	tab = ft_split(str, '1');
-	printf("%c", tab[0]);
-	return (0);
 }
