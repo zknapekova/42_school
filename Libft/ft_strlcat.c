@@ -35,12 +35,3 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	else
 		return (src_len + dst_len);
 }
-/*
-int	main(void)
-{
-	char	str1[] = "12345";
-	char	str2[] = "678910";
-	
-	printf("%ld\n", ft_strlcat(str1, str2, 1 ));
-	printf("%s\n", str1);
-}*/

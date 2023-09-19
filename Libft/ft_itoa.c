@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static int	abs_value(int value)
+static long int	abs_value(long int value)
 {
 	if (value < 0)
 		return (-value);

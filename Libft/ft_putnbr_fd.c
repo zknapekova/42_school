@@ -30,16 +30,3 @@ void	ft_putnbr_fd(int n, int fd)
 		ft_putnbr_fd(nb_long % 10, fd);
 	}
 }
-/*
-#include <stdio.h>
-#include <fcntl.h>
-#include <string.h>
-int	main(void)
-{
-	int	fd;
-	int s = -2147483648;
-	fd = open("file5.txt", O_WRONLY | O_CREAT, 0666);
-	ft_putnbr_fd(s, fd);
-	printf("%d", fd);
-	close(fd);
-}*/

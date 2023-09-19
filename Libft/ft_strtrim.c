@@ -12,61 +12,38 @@
 
 #include "libft.h"
 
-static char	*ft_remove_char(char *s, size_t index)
+static char	*ft_trim(char *str, char const *set)
 {
-	char	*result;
-	size_t	i;
+	size_t	start_index;
+	size_t	end_len;
 	size_t	j;
-	size_t	len;
 
-	len = ft_strlen(s);
-	i = 0;
+	start_index = 0;
+	end_len = ft_strlen(str);
 	j = 0;
-	result = (char *)malloc(sizeof(char) * len);
-	if (!result)
-		return (NULL);
-	while (i < len)
+	while (str && set[j])
 	{
-		if (i != index)
-			result[j++] = s[i++];
-		else
-			i++;
-	}
-	result[j] = '\0';
-	return (result);
-}
-
-char	*ft_strtrim(char const *s1, char const *set)
-{
-	size_t	j;
-	char	*s1_str;
-
-	s1_str = (char *)s1;
-	j = 0;
-	while (s1_str && set[j])
-	{
-		if (s1_str[0] == set[j])
+		if (str[start_index] == set[j])
 		{
-			s1_str = ft_remove_char(s1_str, 0);
+			start_index++;
 			j = 0;
 		}
-		else if (s1_str[ft_strlen(s1_str) - 1] == set[j])
+		else if (str[end_len - 1] == set[j])
 		{
-			s1_str = ft_remove_char(s1_str, ft_strlen(s1_str) - 1);
 			j = 0;
+			end_len--;
 		}
 		else
 			j++;
 	}
-	return (s1_str);
+	return (ft_substr(str, start_index, end_len - start_index));
 }
-/*
-#include <stdio.h>
-int	main(void)
+
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	char	str[] = "";
-	char	set[]="av";
-	char	*result;
-	result = ft_strtrim(str, set);
-	printf("res:%s", result);
-}*/
+	if (!s1)
+		return (NULL);
+	if (!set)
+		return ((char *)s1);
+	return (ft_trim((char *)s1, set));
+}

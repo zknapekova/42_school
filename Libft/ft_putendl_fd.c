@@ -17,16 +17,3 @@ void	ft_putendl_fd(char *s, int fd)
 	ft_putstr_fd(s, fd);
 	ft_putchar_fd('\n', fd);
 }
-/*
-#include <stdio.h>
-#include <fcntl.h>
-#include <string.h>
-int	main(void)
-{
-	int	fd;
-	char s[] = "abc";
-	fd = open("file5.txt", O_WRONLY | O_CREAT, 0666);
-	ft_putendl_fd(s, fd);
-	printf("%d", fd);
-	close(fd);
-}*/

@@ -20,8 +20,10 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 
 	i = 0;
 	n = ft_strlen(s);
+	if (n == 0)
+		return (ft_strdup(""));
 	result = (char *)malloc(sizeof(char) * (n + 1));
-	if (!result || n == 0)
+	if (!result)
 		return (NULL);
 	while (s[i])
 	{
@@ -31,23 +33,3 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	result[i] = '\0';
 	return (result);
 }
-/*
-#include<stdio.h>
-char	ft_toupper2(unsigned int n, char c)
-{
-	if (c >= 97 && c <= 122)
-		return (c - 32);
-	n += 1;
-	
-	return (c);
-}
-
-int	main(void)
-{
-	const char str[] = "";
-	char	*res;
-	res = ft_strmapi(str, ft_toupper2);
-	printf("%s", res);
-	return (0);
-	
-}*/

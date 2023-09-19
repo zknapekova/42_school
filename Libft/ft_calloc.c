@@ -17,19 +17,8 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	void	*result;
 
 	result = malloc(size * nmemb);
-	if (!result || (size * nmemb) == 0)
+	if (!result)
 		return (NULL);
-	ft_bzero(result, nmemb);
+	ft_bzero(result, size * nmemb);
 	return (result);
 }
-/*
-#include<stdio.h>
-int	main(void)
-{
-	void	*p;
-	
-	p = ft_calloc(213456789, 21345987);
-	if (!p)
-		printf("fail");
-	return (0);
-}*/

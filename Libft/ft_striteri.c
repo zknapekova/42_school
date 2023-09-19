@@ -24,18 +24,3 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 		}
 	}
 }
-/*
-#include <stdio.h>
-void	ft_toupper2(unsigned int n, char* c)
-{
-	*c = 'b';		
-	n += 0;
-}
-int	main(void)
-{
-
-	char str[] = "abcd";
-
-	ft_striteri(str, ft_toupper2);
-	printf("%s\n", str);
-}*/

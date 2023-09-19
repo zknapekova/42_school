@@ -25,21 +25,3 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	}
 	return (NULL);
 }
-/*
-#include <stdio.h>
-#include <string.h>
-
-int main () {
-   const char str[] = "aa.aab";
-   const char ch = '.';
-   char *ret;
-   char *ret2;
-
-   ret = ft_memchr(str, ch, strlen(str));
-   ret2 = memchr(str, ch, strlen(str));
-
-   printf("ft: String after |%c| is - |%s|\n", ch, ret);
-   printf("or: String after |%c| is - |%s|\n", ch, ret2);
-
-   return(0);
-}*/

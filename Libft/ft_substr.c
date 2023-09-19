@@ -11,38 +11,30 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-/*
-PARAMETERS: 
-s: The string from which to create the substring.
-start: The start index of the substring in the string ’s’.
-len: The maximum length of the substring.
-RETURN VALUE: The substring. NULL if the allocation fails.
-DESCRIPTION: 
-Allocates (with malloc(3)) and returns a substring from the string ’s’.
-The substring begins at index ’start’ and is of maximum size ’len’.
-*/
+
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*result;
-	int		i;
-	size_t	str_len;
+	size_t	src_len;
 
-	str_len = ft_strlen(s);
-	i = 0;
-	if (start >= str_len || (len == 0))
+	if (!s)
+		return (NULL);
+	src_len = ft_strlen(s);
+	if (start >= src_len)
 	{
 		result = (char *)malloc(sizeof(char) * 1);
 		if ((!result))
 			return (NULL);
+		result[0] = '\0';
 	}
 	else
 	{
+		if (len > ft_strlen(s + start))
+			len = ft_strlen(s + start);
 		result = (char *)malloc(sizeof(char) * (len + 1));
-		if ((!result))
+		if (!result)
 			return (NULL);
-		while (len - i > 0)
-			result[i++] = s[start++];
+		ft_strlcpy(result, s + start, len + 1);
 	}
-	result[i] = '\0';
 	return (result);
 }

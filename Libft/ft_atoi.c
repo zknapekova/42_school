@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(char *nptr)
+int	ft_atoi(const char *nptr)
 {
 	int	result;
 	int	sgn;
@@ -35,12 +35,3 @@ int	ft_atoi(char *nptr)
 	}
 	return (sgn * result);
 }
-/*
-#include<stdlib.h>
-#include <stdio.h>
-int main(void)
-{
-	char str[] = "\n\n\t-2147483648";
-	printf("%d\n", ft_atoi(str));
-	printf("%d", atoi(str));	
-}*/
