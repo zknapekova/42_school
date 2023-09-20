@@ -69,10 +69,10 @@ char	**ft_split(char const *s, char c)
 
 	i = 0;
 	count = ft_count_substrings(s, c);
-	result = (char **) malloc(sizeof(char *) * (count + 1));
+	result = (char **)malloc(sizeof(char *) * (count + 1));
 	if (!result)
 		return (NULL);
-	while (*s)
+	while (*s && count)
 	{
 		while (*s == c)
 			s++;
@@ -80,7 +80,7 @@ char	**ft_split(char const *s, char c)
 		{
 			result[i] = ft_substr(s, 0, ft_del_index(s, c));
 			if (!(result[i]))
-				free_array(result);
+				return (free_array(result));
 			i++;
 		}
 		while (*s && *s != c)
